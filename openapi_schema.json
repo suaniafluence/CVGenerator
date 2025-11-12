@@ -1,0 +1,267 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "CV Generator API",
+    "description": "API pour générer des CV professionnels à partir de fichiers CSV. Cette API permet de créer des CV au format PDF avec un design moderne à deux colonnes.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Suan Tay",
+      "email": "suan.tay@iafluence.fr"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://TON-API-URL.onrender.com",
+      "description": "Serveur de production (à remplacer par ton URL)"
+    },
+    {
+      "url": "http://localhost:5000",
+      "description": "Serveur de développement local"
+    }
+  ],
+  "paths": {
+    "/generate-cv": {
+      "post": {
+        "summary": "Génère un CV professionnel",
+        "description": "Génère un CV au format PDF à partir d'un contenu CSV structuré. Le CSV doit contenir les colonnes: section, subsection, type, content, order",
+        "operationId": "generateCV",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "csv_content": {
+                    "type": "string",
+                    "description": "Contenu du fichier CSV avec colonnes: section, subsection, type, content, order. Les sections disponibles sont: header, langues, competences_cles, centres_interet, profil, experience, formation, competences_tech"
+                  }
+                },
+                "required": ["csv_content"]
+              },
+              "examples": {
+                "exemple_simple": {
+                  "summary": "Exemple simple",
+                  "value": {
+                    "csv_content": "section,subsection,type,content,order\nheader,nom,text,Jean DUPONT,1\nheader,titre,text,Développeur Full Stack,2\nheader,email,text,jean.dupont@email.com,3\nprofil,description,paragraph,Développeur passionné avec 5 ans d'expérience,1\nexperience,google_titre,text,Senior Developer - Google,1\nexperience,google_periode,text,2020-2024 | Mountain View,1\nexperience,google_bullet1,bullet,Développé des applications scalables,1"
+                  }
+                },
+                "exemple_complet": {
+                  "summary": "Exemple complet avec toutes les sections",
+                  "value": {
+                    "csv_content": "section,subsection,type,content,order\nheader,nom,text,SUAN TAY,1\nheader,titre,text,Ingénieur IA,2\nheader,email,text,suan.tay@iafluence.fr,3\nheader,telephone,text,+33 6 65 19 76 33,4\nlangues,francais,text,Français - Bilingue,1\nlangues,anglais,text,Anglais - Courant,2\ncompetences_cles,ia,text,<b>IA</b>: LLM RAG Prompt Engineering,1\nprofil,description,paragraph,Ingénieur IA expert en NLP et LLM,1\nexperience,iafluence_titre,text,Consultant IA - IAfluence,1\nexperience,iafluence_periode,text,Mars 2024 - Aujourd'hui,1\nexperience,iafluence_bullet1,bullet,Conseil stratégique IA,1\nformation,mba_titre,text,MBA,1\nformation,mba_periode,text,2023-2024,1"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "CV généré avec succès",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "Indique si la génération a réussi"
+                    },
+                    "cv_id": {
+                      "type": "string",
+                      "format": "uuid",
+                      "description": "Identifiant unique du CV généré"
+                    },
+                    "download_url": {
+                      "type": "string",
+                      "format": "uri",
+                      "description": "URL pour télécharger le CV PDF"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "Message de confirmation"
+                    }
+                  }
+                },
+                "examples": {
+                  "success": {
+                    "value": {
+                      "success": true,
+                      "cv_id": "123e4567-e89b-12d3-a456-426614174000",
+                      "download_url": "https://api.com/download-cv/123e4567-e89b-12d3-a456-426614174000",
+                      "message": "CV généré avec succès"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Requête invalide - CSV mal formaté ou champs manquants",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Erreur serveur lors de la génération du CV",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/download-cv/{cv_id}": {
+      "get": {
+        "summary": "Télécharge un CV généré",
+        "description": "Récupère le fichier PDF d'un CV précédemment généré via son identifiant unique",
+        "operationId": "downloadCV",
+        "parameters": [
+          {
+            "name": "cv_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "UUID du CV à télécharger (obtenu via /generate-cv)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Fichier PDF du CV",
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "CV non trouvé - l'identifiant est invalide ou le CV a expiré",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "summary": "Vérifie l'état de l'API",
+        "description": "Endpoint de santé pour vérifier que l'API est en ligne et opérationnelle",
+        "operationId": "healthCheck",
+        "responses": {
+          "200": {
+            "description": "API en ligne et opérationnelle",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "enum": ["healthy"]
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  }
+                },
+                "example": {
+                  "status": "healthy",
+                  "timestamp": "2025-11-12T12:00:00Z"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CVRequest": {
+        "type": "object",
+        "required": ["csv_content"],
+        "properties": {
+          "csv_content": {
+            "type": "string",
+            "description": "Contenu CSV formaté avec les colonnes: section, subsection, type, content, order"
+          }
+        }
+      },
+      "CVResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "cv_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "download_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "error": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

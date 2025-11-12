@@ -1,0 +1,84 @@
+section,subsection,type,content,order
+# INFORMATIONS PERSONNELLES
+header,nom,text,SUAN TAY,1
+header,titre,text,Ingénieur IA,2
+header,email,text,suan.tay@iafluence.fr,3
+header,telephone,text,+33 6 65 19 76 33,4
+header,localisation,text,Clermont-Ferrand,5
+header,remote,text,Remote,6
+header,twitter,text,@suaniafluence,7
+header,linkedin,text,SuanTay,8
+
+# LANGUES
+langues,francais,text,Français - Bilingue,1
+langues,anglais,text,Anglais - Courant,2
+langues,espagnol,text,Espagnol - Bilingue,3
+
+# COMPÉTENCES CLÉS (SIDEBAR)
+competences_cles,strategie,text,"<b>Stratégie Data & IA</b>: Gouvernance, feuille de route, conduite du changement",1
+competences_cles,leadership,text,"<b>Leadership</b>: Recrutement, coaching, pilotage de projets",2
+competences_cles,cloud,text,"<b>Cloud & Sécurité</b>: Standards, gestion des risques, RGPD",3
+competences_cles,innovation,text,"<b>Innovation</b>: Transformation, bonnes pratiques IA",4
+
+# CENTRES D'INTÉRÊT
+centres_interet,velo,text,Vélo,1
+centres_interet,meditation,text,Méditation,2
+centres_interet,reseaux,text,Réseaux sociaux,3
+
+# PROFIL
+profil,description,paragraph,"Ingénieur IA et Data Scientist avec une solide expérience dans le développement de solutions d'intelligence artificielle et d'applications data. Expert en <b>NLP, LLM et RAG</b>, je conçois, fine-tune et déploie des modèles en production. Mon approche combine rigueur analytique, créativité et accompagnement du changement pour maximiser l'impact business et favoriser l'adoption organisationnelle.",1
+
+# EXPÉRIENCES PROFESSIONNELLES
+experience,iafluence_titre,text,Consultant IA et Formateur - IAfluence,1
+experience,iafluence_periode,text,Depuis mars 2024 | Volvic,1
+experience,iafluence_bullet1,bullet,Conseil stratégique sur l'intégration de l'IA (LLM RAG GPT),1
+experience,iafluence_bullet2,bullet,Formation avancée en prompting et personnalisation de modèles GPT,2
+experience,iafluence_bullet3,bullet,Juré aux examens CDA (Ministère du Travail) soutenances M1/M2,3
+experience,iafluence_bullet4,bullet,Déploiement d'une application mobile (gestion de projet intégration IA),4
+experience,iafluence_bullet5,bullet,Audit SEO avec génération automatisée de métadonnées via GPT,5
+
+experience,appuy_titre,text,Professeur Vacataire et Coach IA,2
+experience,appuy_periode,text,Depuis novembre 2024 | Appuy Compétences - Clermont-Ferrand,2
+experience,appuy_bullet1,bullet,ESC Clermont Business School - Université Clermont Auvergne,1
+experience,appuy_bullet2,bullet,Encadrement de projets IA appliqués (académiques & professionnels),2
+experience,appuy_bullet3,bullet,Formation des étudiants aux usages stratégiques et techniques de l'IA,3
+
+experience,screenact_titre,text,Ingénieur IA - COO Directeur des opérations,3
+experience,screenact_periode,text,Mars 2022 - Avril 2024 | ScreenACT - Riom,3
+experience,screenact_bullet1,bullet,Élaboré et mis en œuvre une stratégie Data & IA,1
+experience,screenact_bullet2,bullet,Déployé des modèles IA avancés (Databricks LLM),2
+experience,screenact_bullet3,bullet,Dirigé une équipe multidisciplinaire (IT Data Science RH),3
+experience,screenact_bullet4,bullet,Représenté l'entreprise à des conférences internationales,4
+
+experience,accenture_titre,text,Ingénieur Logiciel,4
+experience,accenture_periode,text,Janvier 2019 - Décembre 2019 | Accenture - Clermont-Ferrand,4
+experience,accenture_bullet1,bullet,Développé un logiciel de gestion de projet,1
+
+experience,goodyear_titre,text,Développeur IT,5
+experience,goodyear_periode,text,Octobre 2008 - Décembre 2017 | Goodyear Dunlop Tires - Riom,5
+experience,goodyear_bullet1,bullet,Développé une plateforme de gestion des ressources,1
+
+# FORMATIONS
+formation,mba_titre,text,Master of Business Administration - MBA,1
+formation,mba_periode,text,Sept. 2023 - Sept. 2024 | ESC Clermont Business School,1
+formation,mba_description,text,Formation en gestion et stratégie d'entreprise. Enrichit mes compétences en gestion d'équipes optimisation des processus et stratégie numérique.,1
+
+formation,centralesupelec_titre,text,Ingénieur Intelligence Artificielle (IA) Data Scientist,2
+formation,centralesupelec_periode,text,Juin 2020 - Août 2021 | CentraleSupélec Paris,2
+formation,centralesupelec_description,text,Machine Learning Deep Learning (NLP Computer Vision) Déploiement (Docker Kubernetes Azure) Méthodologie Agile/Scrum RGPD.,2
+
+formation,cnam_titre,text,Diplôme d'ingénieur en informatique (CTI),3
+formation,cnam_periode,text,2007 - 2017 | CNAM Paris,3
+formation,cnam_description,text,Reconnu par la Commission des Titres d'Ingénieur. Développement Logiciel Architecture Agile.,3
+
+# COMPÉTENCES TECHNIQUES (PAGE 2 - optionnel)
+competences_tech,llm,text,"<b>LLM & GenAI</b>: GPT (OpenAI), LLaMA, Mistral, Claude • Fine-tuning • Prompt Engineering avancé",1
+competences_tech,rag,text,"<b>RAG</b>: FAISS, ChromaDB • Recherche sémantique • Architecture hybride LLM + Knowledge Base",2
+competences_tech,agents,text,"<b>Agents IA</b>: LangChain, LlamaIndex • Orchestration multi-agents • Automatisation de workflows",3
+competences_tech,deep_learning,text,"<b>Deep Learning</b>: Transformers, CNN, RNN • NLP (BERT, LSTM) • Computer Vision",4
+competences_tech,cloud,text,"<b>Cloud</b>: Azure (Azure AI Foundry, Azure ML), AWS (SageMaker, Lambda, S3), GCP, Scaleway",5
+competences_tech,mlops,text,"<b>MLOps & DevOps</b>: Docker, Kubernetes • CI/CD • Monitoring et versioning de modèles",6
+competences_tech,prog,text,"<b>Programmation</b>: Python (expert), SQL, Spark SQL, Java, C#",7
+competences_tech,data_eng,text,"<b>Data Engineering</b>: Databricks, Apache Spark • Pipelines ETL/ELT",8
+competences_tech,api,text,"<b>API</b>: FastAPI, Flask • REST APIs • Intégrations tierces",9
+competences_tech,securite,text,"<b>Sécurité & Conformité</b>: Gouvernance de l'IA • RGPD • IA responsable • Détection de biais",10
